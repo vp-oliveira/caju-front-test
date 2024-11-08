@@ -1,13 +1,16 @@
 name: CD - Prod
 
 on:
-  workflow_dispatch:
-    inputs:
-      choice:
-        type: choice
-        description: Escolha o Ambiente
-        options:
-          - master
+  push:
+    branches:
+      - 'feat**'
+      - 'hotfix**'
+      - 'bugfix**'
+      - 'fix**'
+      - 'refactor**'
+      - 'test**'
+      - 'chore**'
+      - 'master'
 
 jobs:
   tests:
