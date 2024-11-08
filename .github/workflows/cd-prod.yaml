@@ -1,0 +1,40 @@
+name: CD - Prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: Escolha o Ambiente
+        options:
+          - staging
+      account:
+        description: 'Insira a Branch'
+        required: true
+      generate:
+        description: 'Insira uma tag'
+        required: true
+        default: ''
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment
+        run: cp .env
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.17.0'
+
+      - run: yarn install
+
+      - run: yarn cache clean
+
+      - run: yarn test
+
+      - run: yarn e2e
