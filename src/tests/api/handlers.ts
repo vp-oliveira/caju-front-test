@@ -1,3 +1,3 @@
-import { loadTrips } from './http/Trips.http'
+import { loadRegistrations } from "./http/Registration.http";
 
-export const handlers = [loadTrips]
+export const handlers = [loadRegistrations];

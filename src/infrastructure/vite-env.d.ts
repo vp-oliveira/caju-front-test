@@ -2,7 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_BASE_URL: string;
-  readonly VITE_MOCK_BASE_URL: string;
+  readonly VITE_API_URL: string;
+  readonly VITE_API_MOCK_URL: string;
 }
 
 interface ImportMeta {

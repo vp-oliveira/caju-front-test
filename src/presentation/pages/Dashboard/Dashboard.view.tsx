@@ -1,29 +1,29 @@
-import { HiRefresh } from 'react-icons/hi'
+import { HiRefresh } from "react-icons/hi";
 
-import { Collumns } from './components/Columns/Columns.view'
-import { SearchBar } from './components/Searchbar/SearchBar.view'
-import * as S from './Dashboard.styles'
+import { Collumns } from "./components/Columns/Columns.view";
+import { SearchBar } from "./components/Searchbar/SearchBar.view";
+import * as S from "./Dashboard.styles";
 
-import { LoadRegistrations } from '@/core/domain/registrations'
-import { Loading, PageContainer } from '@/presentation/components'
-import Button from '@/presentation/components/Buttons'
-import { IconButton } from '@/presentation/components/Buttons/IconButton'
-import { useNavigateUrl } from '@/presentation/hooks'
+import { LoadRegistrations } from "@/core/domain/registrations";
+import { Loading, PageContainer } from "@/presentation/components";
+import { Button } from "@/presentation/components/Buttons";
+import { IconButton } from "@/presentation/components/Buttons/IconButton";
+import { useNavigateUrl } from "@/presentation/hooks";
 
 export const DashboardPage = (props: {
-  loadingRegistrations: boolean
-  getRegistrations: Array<LoadRegistrations.DataModel>
-  handleGetRegistrations: () => void
-  setReload: (value: boolean) => void
+  loadingRegistrations: boolean;
+  getRegistrations: Array<LoadRegistrations.DataModel>;
+  handleGetRegistrations: () => void;
+  setReload: (value: boolean) => void;
 }) => {
   const {
     getRegistrations,
     loadingRegistrations,
     handleGetRegistrations,
-    setReload
-  } = props
+    setReload,
+  } = props;
 
-  const { navigate } = useNavigateUrl()
+  const { navigate } = useNavigateUrl();
 
   return (
     <PageContainer>
@@ -39,7 +39,7 @@ export const DashboardPage = (props: {
             </IconButton>
             <Button
               onClick={() => {
-                navigate('/new-user')
+                navigate("/new-user");
               }}
             >
               Nova Admissão
@@ -57,5 +57,5 @@ export const DashboardPage = (props: {
         </S.Content>
       </S.Container>
     </PageContainer>
-  )
-}
+  );
+};

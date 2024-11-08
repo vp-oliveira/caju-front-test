@@ -1,83 +1,83 @@
-import { Fragment, ReactNode, useState } from 'react'
+import { Fragment, ReactNode, useState } from "react";
 import {
   HiOutlineMail,
   HiOutlineUser,
   HiOutlineCalendar,
-  HiOutlineTrash
-} from 'react-icons/hi'
+  HiOutlineTrash,
+} from "react-icons/hi";
 
-import * as S from './RegistrationCard.styles'
+import * as S from "./RegistrationCard.styles";
 
-import { LoadRegistrations } from '@/core/domain/registrations'
-import { RegistrationStatus } from '@/core/enums/registrations'
-import { Modal } from '@/presentation/components'
-import { ButtonSmall } from '@/presentation/components/Buttons'
+import { LoadRegistrations } from "@/core/domain/registrations";
+import { RegistrationStatus } from "@/core/enums/registrations";
+import { Modal } from "@/presentation/components";
+import { ButtonSmall } from "@/presentation/components/Buttons";
 
 export const RegistrationCardComponent = (props: {
-  data: LoadRegistrations.DataModel
-  loadingRegistrations: boolean
-  handleDeleteRegistration: (id: string) => void
-  handleUpdateRegistration: (id: string, payload: any) => void
-  setReload: (value: boolean) => any
+  data: LoadRegistrations.DataModel;
+  loadingRegistrations: boolean;
+  handleDeleteRegistration: (id: string) => void;
+  handleUpdateRegistration: (id: string, payload: any) => void;
+  setReload: (value: boolean) => any;
 }) => {
   const {
     data,
     handleDeleteRegistration,
     handleUpdateRegistration,
-    setReload
-  } = props
-  const [isOpen, setIsOpen] = useState(false)
-  const [deleteIsOpen, setDeleteIsOpen] = useState(false)
-  const [cardStatus, setCardStatus] = useState<RegistrationStatus>('REVIEW')
+    setReload,
+  } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const [deleteIsOpen, setDeleteIsOpen] = useState(false);
+  const [cardStatus, setCardStatus] = useState<RegistrationStatus>("REVIEW");
 
   const cardsArr: Array<{
-    key: RegistrationStatus
-    status: boolean
-    bgColor: string
-    buttonTitle: string
+    key: RegistrationStatus;
+    status: boolean;
+    bgColor: string;
+    buttonTitle: string;
     modal: {
-      title: string
-      body: ReactNode
-    }
+      title: string;
+      body: ReactNode;
+    };
   }> = [
     {
-      key: 'REPROVED',
-      status: data.status === 'REVIEW',
-      bgColor: 'rgb(255, 145, 154)',
-      buttonTitle: 'Reprovar',
+      key: "REPROVED",
+      status: data.status === "REVIEW",
+      bgColor: "rgb(255, 145, 154)",
+      buttonTitle: "Reprovar",
       modal: {
-        title: 'Reprovar',
-        body: <div>Deseja reprovar {data.employeeName}?</div>
-      }
+        title: "Reprovar",
+        body: <div>Deseja reprovar {data.employeeName}?</div>,
+      },
     },
     {
-      key: 'APPROVED',
-      status: data.status === 'REVIEW',
-      bgColor: 'rgb(155, 229, 155)',
-      buttonTitle: 'Aprovar',
+      key: "APPROVED",
+      status: data.status === "REVIEW",
+      bgColor: "rgb(155, 229, 155)",
+      buttonTitle: "Aprovar",
       modal: {
-        title: 'Aprovar',
-        body: <div>Deseja aprovar {data.employeeName}?</div>
-      }
+        title: "Aprovar",
+        body: <div>Deseja aprovar {data.employeeName}?</div>,
+      },
     },
     {
-      key: 'REVIEW',
-      status: data.status === 'APPROVED' || data.status === 'REPROVED',
-      bgColor: '#ff8858',
-      buttonTitle: 'Revisar novamente',
+      key: "REVIEW",
+      status: data.status === "APPROVED" || data.status === "REPROVED",
+      bgColor: "#ff8858",
+      buttonTitle: "Revisar novamente",
       modal: {
-        title: 'Revisar novamente',
+        title: "Revisar novamente",
         body: (
           <div>
             Deseja revisar novamente o registro de(a) {data.employeeName}?
           </div>
-        )
-      }
-    }
-  ]
+        ),
+      },
+    },
+  ];
 
   return (
-    <S.Card>
+    <S.Card data-testid="registration-card">
       <S.IconAndText>
         <HiOutlineUser />
         <h3>{data.employeeName}</h3>
@@ -99,8 +99,8 @@ export const RegistrationCardComponent = (props: {
                   <ButtonSmall
                     bgcolor={bgColor}
                     onClick={() => {
-                      setIsOpen(true)
-                      setCardStatus(key)
+                      setIsOpen(true);
+                      setCardStatus(key);
                     }}
                   >
                     {buttonTitle}
@@ -113,17 +113,17 @@ export const RegistrationCardComponent = (props: {
                       onConfirm={() => {
                         handleUpdateRegistration(data.id, {
                           ...data,
-                          status: key
-                        })
-                        setIsOpen(false)
-                        setReload((prevState) => !prevState)
+                          status: key,
+                        });
+                        setIsOpen(false);
+                        setReload((prevState) => !prevState);
                       }}
                     >
                       {modal.body}
                     </Modal>
                   )}
                 </Fragment>
-              )
+              );
             }
           })}
         </div>
@@ -132,9 +132,9 @@ export const RegistrationCardComponent = (props: {
           open={deleteIsOpen}
           onClose={setDeleteIsOpen}
           onConfirm={() => {
-            handleDeleteRegistration(data.id)
-            setDeleteIsOpen(false)
-            setReload((prevState) => !prevState)
+            handleDeleteRegistration(data.id);
+            setDeleteIsOpen(false);
+            setReload((prevState) => !prevState);
           }}
           title="Deletar"
         >
@@ -142,5 +142,5 @@ export const RegistrationCardComponent = (props: {
         </Modal>
       </S.Actions>
     </S.Card>
-  )
-}
+  );
+};

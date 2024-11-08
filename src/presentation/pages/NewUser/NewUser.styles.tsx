@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import Button from '@/presentation/components/Buttons'
-import { _IconButtonStyled } from '@/presentation/components/Buttons/IconButton'
+import { Button } from "@/presentation/components/Buttons";
+import { _IconButtonStyled } from "@/presentation/components/Buttons/IconButton";
 
 export const Container = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 16px;
-`
+`;
 
 export const Card = styled.div`
   border: 2px solid #f0f0f0;
@@ -33,4 +33,4 @@ export const Card = styled.div`
     flex-direction: column;
     gap: 16px;
   }
-`
+`;

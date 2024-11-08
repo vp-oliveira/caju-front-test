@@ -7,7 +7,7 @@ import {
   UpdateRegistration,
   DeleteRegistration,
 } from "@/core/domain/registrations";
-import { VITE_BASE_URL } from "@/infrastructure/AppSettings";
+import { VITE_API_URL } from "@/infrastructure/AppSettings";
 
 export class RegistrationsRepository {
   public async LoadRegistrations(
@@ -18,7 +18,7 @@ export class RegistrationsRepository {
     const request: HttpResponse<LoadRegistrations.Response> =
       await httpClient.request({
         method: "GET",
-        url: `${VITE_BASE_URL}/registrations${filters}`,
+        url: `${VITE_API_URL}/registrations${filters}`,
       });
 
     const httpStatusCode: Record<
@@ -50,7 +50,7 @@ export class RegistrationsRepository {
     const request: HttpResponse<CreateRegistration.Request> =
       await httpClient.request({
         method: "POST",
-        url: `${VITE_BASE_URL}/registrations`,
+        url: `${VITE_API_URL}/registrations`,
         body: {
           admissionDate: payload.admissionDate,
           cpf: payload.cpf,
@@ -77,7 +77,7 @@ export class RegistrationsRepository {
     const request: HttpResponse<UpdateRegistration.Request> =
       await httpClient.request({
         method: "PUT",
-        url: `${VITE_BASE_URL}/registrations/${id}`,
+        url: `${VITE_API_URL}/registrations/${id}`,
         body: payload,
       });
 
@@ -95,7 +95,7 @@ export class RegistrationsRepository {
     const request: HttpResponse<DeleteRegistration.Request> =
       await httpClient.request({
         method: "DELETE",
-        url: `${VITE_BASE_URL}/registrations/${id}`,
+        url: `${VITE_API_URL}/registrations/${id}`,
       });
 
     const httpStatusCode: Record<HttpStatusCode | any, any> = {

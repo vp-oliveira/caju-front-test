@@ -1,27 +1,27 @@
-import { RegistrationCard } from '../RegistrationCard/RegistrationCard.container'
+import { RegistrationCard } from "../RegistrationCard/RegistrationCard.container";
 
-import * as S from './Columns.styles'
+import * as S from "./Columns.styles";
 
-import { LoadRegistrations } from '@/core/domain/registrations'
-import { RegistrationStatus } from '@/core/enums/registrations'
+import { LoadRegistrations } from "@/core/domain/registrations";
+import { RegistrationStatus } from "@/core/enums/registrations";
 
 export const Collumns = (props: {
-  registrations: Array<LoadRegistrations.DataModel>
-  setReload: (value: boolean) => void
+  registrations: Array<LoadRegistrations.DataModel>;
+  setReload: (value: boolean) => void;
 }) => {
-  const { registrations, setReload } = props
+  const { registrations, setReload } = props;
 
   const allColumns: Array<{
-    status: RegistrationStatus
-    title: string
+    status: RegistrationStatus;
+    title: string;
   }> = [
-    { status: 'REVIEW', title: 'Pronto para revisar' },
-    { status: 'APPROVED', title: 'Aprovado' },
-    { status: 'REPROVED', title: 'Reprovado' }
-  ]
+    { status: "REVIEW", title: "Pronto para revisar" },
+    { status: "APPROVED", title: "Aprovado" },
+    { status: "REPROVED", title: "Reprovado" },
+  ];
 
   return (
-    <S.Container>
+    <S.Container data-testid="columns">
       {allColumns?.map((collum) => {
         return (
           <S.Column status={collum.status} key={collum.title}>
@@ -38,14 +38,14 @@ export const Collumns = (props: {
                         key={registration.id}
                         setReload={setReload}
                       />
-                    )
+                    );
                   }
                 })}
               </S.CollumContent>
             </>
           </S.Column>
-        )
+        );
       })}
     </S.Container>
-  )
-}
+  );
+};

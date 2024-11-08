@@ -7,10 +7,13 @@
     "dev": "cd ./src/presentation && yarn dev",
     "build": "cd ./src/presentation && yarn build",
     "tsc": "cd ./src/presentation && yarn tsc",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run --watch",
+    "test:ci": "vitest run --passWithNoTests",
     "lint": "eslint .",
     "prettier": "prettier --write src/**/*.{ts,tsx}",
-    "init:db": "json-server --watch ./src/infrastructure/db.json"
+    "init:db": "json-server --watch ./src/infrastructure/db.json",
+    "e2e": "yarn playwright test",
+    "e2e:ui": "yarn playwright test --ui"
   },
   "workspaces": [
     "src/presentation",
@@ -24,6 +27,7 @@
     "@evilmartians/lefthook": "^1.7.15",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/node": "^22.5.5",
+    "dotenv": "^16.4.5",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
