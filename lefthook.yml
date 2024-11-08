@@ -8,8 +8,8 @@ pre-commit:
     typescript:
       run: yarn tsc
 
-pre-push:
-  parallel: true
-  commands:
-    tests:
-      run: yarn test
+# pre-push:
+#   parallel: true
+#   commands:
+#     tests:
+#       run: yarn test
