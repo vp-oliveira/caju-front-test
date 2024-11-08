@@ -29,9 +29,11 @@ jobs:
       - name: Clear yarn cache
         run: yarn cache clean
 
-      - name: Add .env file
-        run: echo "${{ secrets.ENV_FILE }}" > .env
-        shell: bash
+      - name: Create .env file
+        run: |
+          echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_API_MOCK_URL=${{ secrets.VITE_API_MOCK_URL }}" >> .env
 
       - name: Run tests
         run: yarn test
