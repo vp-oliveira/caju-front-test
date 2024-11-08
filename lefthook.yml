@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      run: yarn prettier
+    lint:
+      run: yarn lint
+    typescript:
+      run: yarn tsc
+
+pre-push:
+  parallel: true
+  commands:
+    tests:
+      run: yarn test
