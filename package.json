@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "yarn@1.22.19",
+  "engines": {
+    "node": "20.17"
+  },
   "scripts": {
     "dev": "cd ./src/presentation && yarn dev",
     "build": "cd ./src/presentation && yarn build",

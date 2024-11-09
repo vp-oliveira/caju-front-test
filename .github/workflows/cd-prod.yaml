@@ -3,13 +3,6 @@ name: CD - Prod
 on:
   push:
     branches:
-      - 'feat**'
-      - 'hotfix**'
-      - 'bugfix**'
-      - 'fix**'
-      - 'refactor**'
-      - 'test**'
-      - 'chore**'
       - 'master'
 
 jobs:
