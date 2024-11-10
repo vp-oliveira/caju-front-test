@@ -21,7 +21,13 @@ export const Dashboard = () => {
       const convertFilters = convertFiltersObjToUrlString(filters);
       const result = await LoadRegistrations(convertFilters);
 
-      setGetRegistrations(result.body);
+      if (result.statusCode !== 200) {
+        //TODO: Handle API expection (Toast component)
+      }
+      if (result.statusCode === 200) {
+        setGetRegistrations(result.body);
+      }
+
       setLoadingRegistrations(false);
     },
     []

@@ -61,9 +61,21 @@ export class RegistrationsRepository {
       });
 
     const httpStatusCode: Record<HttpStatusCode | any, any> = {
-      [HttpStatusCode.serverError]: {},
-      [HttpStatusCode.created]: {},
-      undefined: {},
+      [HttpStatusCode.serverError]: {
+        body: [],
+        statusCode: HttpStatusCode.serverError,
+        headers: {},
+      },
+      [HttpStatusCode.created]: {
+        body: [],
+        statusCode: HttpStatusCode.created,
+        headers: {},
+      },
+      undefined: {
+        body: [],
+        statusCode: HttpStatusCode.serverError,
+        headers: {},
+      },
     };
 
     return httpStatusCode[request.statusCode];
