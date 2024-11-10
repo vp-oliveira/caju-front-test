@@ -1,2 +1,2 @@
-export * from './cpf.validator'
-export * from './email.validator'
+export * from "./cpf/cpf.validator";
+export * from "./email/email.validator";

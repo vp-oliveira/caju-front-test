@@ -15,8 +15,16 @@ export const NewUser = () => {
   const handleCreateRegistration = useCallback(
     async (payload: CreateRegistration.DataModel) => {
       setLoadingRegistrations(true);
-      await CreateRegistration(payload);
-      navigate("/dashboard");
+      const result = await CreateRegistration(payload);
+
+      if (result.statusCode !== 201) {
+        //TODO: Handle API expection (Toast component)
+      }
+      if (result.statusCode === 201) {
+        //TODO: Handle API success message (Toast component)
+        navigate("/dashboard");
+      }
+
       setLoadingRegistrations(false);
     },
     []
