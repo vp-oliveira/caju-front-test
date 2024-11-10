@@ -22,7 +22,7 @@ export const Dashboard = () => {
       const result = await LoadRegistrations(convertFilters);
 
       if (result.statusCode !== 200) {
-        //TODO: Handle API expection (Toast component)
+        //TODO: Handle API exception (Toast component)
       }
       if (result.statusCode === 200) {
         setGetRegistrations(result.body);

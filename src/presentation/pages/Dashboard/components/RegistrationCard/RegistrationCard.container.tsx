@@ -20,7 +20,12 @@ export const RegistrationCard = (props: {
   const handleDeleteRegistration = useCallback(async (id: string) => {
     setLoadingRegistrations(true);
 
-    await DeleteRegistration(id);
+    const request = await DeleteRegistration(id);
+
+    if (request.statusCode !== 200) {
+      //TODO: Handle API exception (Toast component)
+    }
+
     setLoadingRegistrations(false);
   }, []);
 
@@ -28,7 +33,12 @@ export const RegistrationCard = (props: {
     async (id: string, payload: UpdateRegistration.Request) => {
       setLoadingRegistrations(true);
 
-      await UpdateRegistration(id, payload);
+      const request = await UpdateRegistration(id, payload);
+
+      if (request.statusCode !== 200) {
+        //TODO: Handle API exception (Toast component)
+      }
+
       setLoadingRegistrations(false);
     },
     []

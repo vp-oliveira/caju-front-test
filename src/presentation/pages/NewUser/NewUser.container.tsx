@@ -18,7 +18,7 @@ export const NewUser = () => {
       const result = await CreateRegistration(payload);
 
       if (result.statusCode !== 201) {
-        //TODO: Handle API expection (Toast component)
+        //TODO: Handle API exception (Toast component)
       }
       if (result.statusCode === 201) {
         //TODO: Handle API success message (Toast component)

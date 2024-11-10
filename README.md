@@ -13,6 +13,20 @@ O projeto foi feito com as seguintes tecnologias:
 - [Styled-Components](https://styled-components.com/)
 - [Playwright](https://playwright.dev/)
 
+## CI/CD
+
+Foi criada uma esteira de deploy que roda os testes unitários, testes de integração e após concluidos os steps faz o build e deploy na CloudFlare conforme link: https://91cc8b6a.caju-front-test.pages.dev/
+
+## Commit e Push
+
+São rodados 3 steps no pre-commit deste projeto:
+
+```
+- yarn prettier -> Faz a formatação dos arquivo seguindo o padrão do projeto
+- yarn lint -> Garante a correta formatação e ausencia de erros no projeto
+- yarn tsc -> Verifica possíveis erros de Typescript
+```
+
 ## Instalação
 
 **Versão do Node**
